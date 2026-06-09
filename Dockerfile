@@ -29,7 +29,7 @@ WORKDIR /home/hfcli
 RUN set -exu \
   && curl -LsSf https://hf.co/cli/install.sh | bash
 
-COPY ./hfdl.sh /home/hfcli/.local/bin/hfdl
+COPY --chown=hfcli:hfcli ./hfdl.sh /home/hfcli/.local/bin/hfdl
 
 RUN set -exu \
   && chmod +x /home/hfcli/.local/bin/hfdl
