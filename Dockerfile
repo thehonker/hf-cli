@@ -29,10 +29,10 @@ WORKDIR /home/hfcli
 RUN set -exu \
   && curl -LsSf https://hf.co/cli/install.sh | bash
 
-COPY ./hfdl.sh $HOME/.local/bin/hfdl
+COPY ./hfdl.sh /home/hfcli/.local/bin/hfdl
 
 RUN set -exu \
-  && chmod +x $HOME/.local/bin/hfdl
+  && chmod +x /home/hfcli/.local/bin/hfdl
 
 ENTRYPOINT ["/bin/bash"]
 CMD ["/entrypoint.sh"]
