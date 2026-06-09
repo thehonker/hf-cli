@@ -4,8 +4,9 @@ RUN set -exu \
   && apk add --no-cache \
     bash \
     curl \
-    wget \
-    python3
+    git \
+    python3 \
+    wget
 
 RUN set -exu \
   && addgroup \
@@ -19,6 +20,8 @@ RUN set -exu \
     --shell /bin/bash \
     hfcli
 
+COPY ./entrypoint.sh /entrypoint.sh
+
 USER hfcli
 
 WORKDIR /home/hfcli
@@ -28,3 +31,6 @@ RUN set -exu \
 
 RUN set -exu \
   echo "export PATH=\$HOME/.local/bin:\$PATH" | tee -a $HOME/.bashrc
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["/entrypoint.sh"]
