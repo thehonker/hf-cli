@@ -29,8 +29,10 @@ WORKDIR /home/hfcli
 RUN set -exu \
   && curl -LsSf https://hf.co/cli/install.sh | bash
 
+COPY ./hfdl.sh $HOME/.local/bin/hfdl
+
 RUN set -exu \
-  echo "export PATH=\$HOME/.local/bin:\$PATH" | tee -a $HOME/.bashrc
+  && chmod +x $HOME/.local/bin/hfdl
 
 ENTRYPOINT ["/bin/bash"]
 CMD ["/entrypoint.sh"]
